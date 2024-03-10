@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/search_input_widgets.dart';
+import 'widgets/welcome_text_widget.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -10,8 +13,21 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Home Screen"),
+    return Padding(
+      padding: EdgeInsets.only(
+        top: MediaQuery.of(context).padding.top,
+        left: 25,
+        right: 15,
+      ),
+      child: Column(
+        children: [
+          WelcomeText(),
+          SizedBox(
+            height: 14,
+          ),
+          SearchInputWidget(),
+        ],
+      ),
     );
   }
 }
