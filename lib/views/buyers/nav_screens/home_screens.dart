@@ -1,6 +1,7 @@
 import 'package:ecommerce_practise/views/buyers/nav_screens/widgets/banner_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/category_text.dart';
 import 'widgets/search_input_widgets.dart';
 import 'widgets/welcome_text_widget.dart';
 
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
         right: 15,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           WelcomeText(),
           SizedBox(
@@ -28,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SearchInputWidget(),
           BannerWidget(),
+          CategoryText(),
         ],
       ),
     );
