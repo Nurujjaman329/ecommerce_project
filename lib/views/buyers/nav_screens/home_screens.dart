@@ -1,3 +1,4 @@
+import 'package:ecommerce_practise/views/buyers/nav_screens/widgets/banner_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/search_input_widgets.dart';
@@ -26,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 14,
           ),
           SearchInputWidget(),
+          BannerWidget(),
         ],
       ),
     );
