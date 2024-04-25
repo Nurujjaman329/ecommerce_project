@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import 'package:ecommerce_practise/views/buyers/main_screens.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'views/buyers/auth/register_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,13 +30,9 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Ecommerce Project',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: MainScreen(),
+      home: RegisterScreen(),
     );
   }
 }
