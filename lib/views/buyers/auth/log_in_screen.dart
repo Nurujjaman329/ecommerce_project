@@ -1,14 +1,14 @@
-import 'package:ecommerce_practise/views/buyers/auth/log_in_screen.dart';
+import 'package:ecommerce_practise/views/buyers/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class LogInScreen extends StatefulWidget {
+  const LogInScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LogInScreen> createState() => _LogInScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,49 +17,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Create Customer's Account",
+              "Login Customer's Account",
               style: TextStyle(
                 fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(13.0),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Enter Email Address",
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(13.0),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Enter Email Address",
+                ),
               ),
             ),
             SizedBox(
-              height: 10.0,
-            ),
-            CircleAvatar(
-              radius: 64,
-              backgroundColor: Colors.yellow.shade900,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Enput Email',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Enput Full Name',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Enput Phone Number',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                ),
-              ),
+              height: 15.0,
             ),
             Container(
               width: MediaQuery.of(context).size.width - 40,
@@ -72,11 +53,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               child: Center(
                 child: Text(
-                  "Register",
+                  "Login",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
                     letterSpacing: 2,
                   ),
                 ),
@@ -86,14 +65,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Already have an Account ?",
+                  "Need An Account",
+                  style: TextStyle(),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LogInScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterScreen()));
                   },
-                  child: Text("Login"),
+                  child: Text("Register"),
                 ),
               ],
             ),
