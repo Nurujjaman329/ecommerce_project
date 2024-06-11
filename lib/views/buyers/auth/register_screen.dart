@@ -20,11 +20,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
   late String phoneNumber;
   late String password;
 
+  bool _isLoading = false;
+
   _signUpUser() async {
+    setState(() {
+      _isLoading = true;
+    });
     if (_formKey.currentState!.validate()) {
-      await _authController.signUpUsers(email, fullName, phoneNumber, password);
+      await _authController
+          .signUpUsers(email, fullName, phoneNumber, password)
+          .whenComplete(() {
+        setState(() {
+          _formKey.currentState!.reset();
+          _isLoading = false;
+        });
+      });
       return showSnack(context, 'Accouunt Create Successfully');
     } else {
+      setState(() {
+        _isLoading = false;
+      });
       return showSnack(context, 'Please Fields must not be empty');
     }
   }
@@ -66,7 +81,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       email = value;
                     },
                     decoration: InputDecoration(
-                      labelText: 'Enput Email',
+                      labelText: 'Input Email',
                     ),
                   ),
                 ),
@@ -84,7 +99,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       fullName = value;
                     },
                     decoration: InputDecoration(
-                      labelText: 'Enput Full Name',
+                      labelText: 'Input Full Name',
                     ),
                   ),
                 ),
@@ -102,13 +117,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       phoneNumber = value;
                     },
                     decoration: InputDecoration(
-                      labelText: 'Enput Phone Number',
+                      labelText: 'Input Phone Number',
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(13.0),
                   child: TextFormField(
+                    obscureText: true,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please Password Must not be empty';
@@ -138,15 +154,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     child: Center(
-                      child: Text(
-                        "Register",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2,
-                        ),
-                      ),
+                      child: _isLoading
+                          ? CircularProgressIndicator()
+                          : Text(
+                              "Register",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2,
+                              ),
+                            ),
                     ),
                   ),
                 ),
